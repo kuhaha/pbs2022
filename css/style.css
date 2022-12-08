@@ -1,0 +1,30 @@
+body{
+  background-color: #dcdee6;
+}
+h2 {
+  background-color: #664985;
+  color: #f7f8f7;
+  font-size: 20pt;
+}
+h3 {
+  background-color: #a2b0ff;
+}
+.red{
+ font-weight:bold;
+ color:red;
+}
+
+.wrapper {
+  margin-right: auto;
+  margin-left:  auto;
+  max-width: 960px;
+  padding-right: 10px;
+  padding-left:  10px;
+}
+#navbar {
+  background-color: darkgray;
+  color: white;
+  text-align: right;
+  vertical-align:middle;
+  min-height: 20pt;
+}
