@@ -3,16 +3,13 @@ require_once('db_inc.php');
 // 変数の初期化。新規登録か編集かにより異なる。
 $act = 'insert';// 新規登録の場合
 $uid = $uname = ''; $urole = 1;
-if (isset($_GET['uid'])){//既存アカウントを編集する場合
+if (isset($_GET['uid'])){
 	$uid = $_GET['uid'] ;
 	// 既存アカウントの情報を検索するSQL文
 	$sql = "SELECT * FROM tbl_user WHERE uid='{$uid}'";
-	// データベースへ問合せのSQL($sql)を実行する・・・
-	$rs = mysql_query($sql, $conn);
-	if (!$rs) die('エラー: ' . mysql_error());
-
-	//問合せ結果を取得し、それぞれの変数に代入しておく
-	$row= mysql_fetch_array($rs);
+  $rs = $conn->query($sql);
+  if (!$rs) die('エラー: ' . $conn->error);
+  $row= $rs->fetch_assoc();
 	if ($row){ // 既存アカウントを編集するために、変数に代入
 		$act = 'update';
 		$uname = $row['uname'];
@@ -27,7 +24,7 @@ if (isset($_GET['uid'])){//既存アカウントを編集する場合
 <tr><td>ユーザID：</td><td><input type="hidden" name="act" value="<?php echo $act; ?>">
 <?php
 if ($act=='insert'){
-  echo '<input type="text" name="uid">';//テキストボックス
+  echo '<input type="text" name="uid">';
 }else {
   echo '<input type="hidden" name="uid" value="'.$uid.'">';//非表示送信
   echo "<b>$uid</b>";

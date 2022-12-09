@@ -1,3 +1,4 @@
+<?php
 require_once('db_inc.php');
 if (isset($_POST['act'])){
   $act = $_POST['act'];
@@ -12,7 +13,8 @@ if (isset($_POST['act'])){
       //既存のアカウントを編集する場合のSQL文
       $sql = "UPDATE tbl_user SET uname='{$uname}',upass='{$upass}',urole={$urole} WHERE uid='{$uid}'";
     }
-    mysql_query($sql, $conn);
+    $rs = $conn->query($sql);
+    if (!$rs) die('エラー: ' . $conn->error);
     echo '<h3>アカウントが更新されました</h3>';
   }else{
     echo '<h3>エラー：パスワードが一致しないので登録できません</h3>';

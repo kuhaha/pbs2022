@@ -1,7 +1,5 @@
 <?php
 require_once('db_inc.php');
-
-
 if (isset($_GET['id'])){
   $id = $_GET['id'] ;
 

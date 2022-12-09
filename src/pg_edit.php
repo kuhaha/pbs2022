@@ -1,36 +1,41 @@
-<h2>発表情報登録・編集画面</h2>
 <?php
+  require_once('db_inc.php');
+  if (isset($_GET['sid'])){
+    $sid =$_GET['sid'];
+  }else{
+    die("学籍番号が与えられていません");
+  }
 
-require_once('db_inc.php');
-$uid = $_SESSION['uid']; 
-
-$where = "1";
-if (isset($_GET['gid'])){
-	$where = "gid=".$_GET['gid'];
-}
-$sql = "SELECT * FROM tbl_student NATURAL JOIN tbl_program NATURAL JOIN tbl_labgroup NATURAL JOIN tbl_lab WHERE ".$where;
-$rs = $conn->query($sql);
-if (!$rs) die('エラー: ' . $conn->error);
-
-echo '<table border=1>';
-echo '<tr><th>学籍番号</th><th>氏名</th><th>研究室</th><th>ボタン</th></tr>';
-
-//学籍番号(sid)、氏名(sname)、性別(sex)、GPA(gpa)、修得単位数(credit)を一覧表示
-$row= $rs->fetch_assoc();
-
-while ($row) {
-	echo '<tr>';
-	echo '<td>' . $row['sid'] . '</td>';
-	$sid = $row['sid'];
-	echo '<td>' . $row['sname']. '</td>';
-	echo '<td>' . $row['labname']. '</td>';
-	echo '<td>' .'<button><a href="?do=pg_edit&sid=' . $sid . '">編集</a></button></td>';
-
-	echo '</tr>';
-	$row= $rs->fetch_assoc();
-	
-}
-echo '</table>';
+  $act = "update";
+  $sql = "SELECT * FROM tbl_student WHERE sid='$sid'";
+  $rs = $conn->query($sql);
+  if (!$rs) die('エラー: ' . $conn->error);
+  $row= $rs->fetch_assoc();
+  if ($row)  
+  {
+    $sname =$row['sname'];
+  }else{
+    die("学籍番号が正しくありません");
+  } 
 
 ?>
+<h2>卒業研究題目登録・編集</h2>
+<form action="?do=eps_pgsave" method="post">
+<table>
+<tr><td>学籍番号：</td><td><?=$sid?>
+<input type="hidden" name="sid" value="<?=$sid?>">
+</td></tr>
+<tr><td>氏　　名：</td><td><?=$sname?></td></tr>
+<tr><td>発表題目：</td><td>
+  <input type="title" name="title">
+</td></tr>
+<tr><td>発表時間：</td><td>
+   <input type="time" name="time1">～
+  <input type="time" name="time2">
+</td></tr>
+<tr>
+<td colspan=2><button><a href="?do=pg_list">戻る</a>&nbsp;</button><input type="submit" value="送信">&nbsp;<input type="reset" value="取消"></td>
+</tr>
 
+</table>
+</form>

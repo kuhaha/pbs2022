@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html><head>
 <meta http-equiv="Content-TYPE" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache">
 <link rel="stylesheet" TYPE="text/css" href="css/style.css">
 </head>
 <body>
@@ -14,23 +15,16 @@ if (isset($_SESSION['urole'])){
   $menu = array();
   if ($_SESSION['urole']==1){  //学生
     $menu = array(   //学生メニュー
-      'プログラム確認'  => 'pg_list',
-      '資料提出'  => 'pg_upload',
       '進捗報告'  => 'ad_schedule',
       '進捗確認'  => 'ad_list1', 
+      'プログラム確認'  => 'pg_list',
+      '資料提出'  => 'file_upload',
       );
   }elseif($_SESSION['urole']==2) { //教員
     $menu = array(   
+    	'進捗状況確認' => 'ad_list',
       '発表情報登録' => 'pg_edit', 
       'プログラム確認'  => 'pg_list',
-    	'進捗状況確認' => 'ad_list',
-    );
-  }elseif($_SESSION['urole']==9) { //教員
-    $menu = array(   
-      '発表情報登録'  => 'pg_edit',
-      'プログラム確認'  => 'pg_list',
-      '進捗確認'  => 'ad_list',
-
     );
   }
   foreach($menu as $label=>$action){

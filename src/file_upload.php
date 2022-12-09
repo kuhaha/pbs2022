@@ -13,16 +13,18 @@ if ($row){
   $time1 = $row['time1'];
   $time2 = $row['time2'];
 ?>
-<h3><?=$title?>（<?=$sid?>）</h3>
+<h3>発表題目：<?=$title?></h3>
+<h4>学籍番号：<?=$sid?></h4>
 <h4>発表時間：<?=substr($time1,0,5)?>～<?=substr($time2,0,5)?></h4>
 </ul>
-<form method="post" action="?do=pg_upload_save" enctype="multipart/form-data">
+<form method="post" action="?do=file_save" enctype="multipart/form-data">
 <input type="hidden" name="sid" value="<?=$sid?>">
-
-<input name="userfile" type="file" /><br>
-<input type="submit" value="　OK　">
-<input type="button" onclick="history.back()" value="　戻る　">
+<input name="userfile" type="file">
+<input type="submit" value="OK">&nbsp;
+<button><a href="?do=pg_list">戻る</a></button>
 </form>
 <?php
+}else{
+  echo "<h3>発表情報が登録されていません。</h3>";
 }
 ?>
