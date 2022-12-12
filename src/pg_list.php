@@ -28,7 +28,7 @@
 		echo '<button><a href="?do=pg_list&gid=' . $gid . '">グループ'.$gid.'</a></button>';
 	}
 		echo '<table border=1>';
-	echo '<tr><th>学籍番号</th><th>氏名</th><th width="480em">タイトル</th><th>研究室</th><th>開始</th><th>終了</th><th>ダウンロード</th></tr>';
+	echo '<tr><th>学籍番号</th><th>氏名</th><th width="400em">タイトル</th><th>研究室</th><th>開始</th><th>終了</th><th>ダウンロード</th></tr>';
 	$row= $rs->fetch_assoc();
 	while ($row) {
 		echo '<tr>';
@@ -48,6 +48,10 @@
 			echo "N/A";
 		}
 		echo '</td>';
+		if ($_SESSION['urole'] > 1){
+			$e_sid = $row['sid'];
+			echo "<td><a href=\"?do=pg_edit&sid={$e_sid}\">登録</a></td>";
+		}
 		echo '</tr>';
 		$row= $rs->fetch_assoc();
 	}

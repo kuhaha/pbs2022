@@ -13,16 +13,17 @@ if ($row){
   $time1 = $row['time1'];
   $time2 = $row['time2'];
 ?>
-<h3>発表題目：<?=$title?></h3>
-<h4>学籍番号：<?=$sid?></h4>
-<h4>発表時間：<?=substr($time1,0,5)?>～<?=substr($time2,0,5)?></h4>
-</ul>
+<table>
+<tr><th>発表題目：</th><td><?=$title?></td></tr>
+<tr><th>学籍番号：</th><td><?=$sid?></td></tr>
+<tr><th>発表時間：</th><td><?=substr($time1,0,5)?>～<?=substr($time2,0,5)?></td></tr>
 <form method="post" action="?do=file_save" enctype="multipart/form-data">
 <input type="hidden" name="sid" value="<?=$sid?>">
-<input name="userfile" type="file">
-<input type="submit" value="OK">&nbsp;
-<button><a href="?do=pg_list">戻る</a></button>
+<tr><th>発表時間：</th><td><input name="userfile" type="file"></td></tr>
+<tr><th></th><td><input type="submit" value="　OK　">　
+<button><a href="?do=pg_list">　戻る　</a></button></td></tr>
 </form>
+</table>
 <?php
 }else{
   echo "<h3>発表情報が登録されていません。</h3>";

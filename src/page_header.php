@@ -22,8 +22,8 @@ if (isset($_SESSION['urole'])){
       );
   }elseif($_SESSION['urole']==2 or $_SESSION['urole']==9 ) { //教員 or 管理者
     $menu = array(   
-    	'進捗状況確認' => 'ad_list',
-      '発表情報登録' => 'pg_edit', 
+    	'進捗状況確認' => 'ad_list2',
+      '発表情報登録' => 'pg_list', 
       'プログラム確認'  => 'pg_list',
     );
   }
