@@ -6,7 +6,7 @@
   $rs = $conn->query($sql);
   if (!$rs) die('エラー: ' . $conn->error);
   $row= $rs->fetch_assoc();
-  if ($row){ //Login succeeded
+  if ($row){ 
     $_SESSION['uid']   = $row['uid'];
     $_SESSION['uname'] = $row['uname'];
     $_SESSION['urole'] = $row['urole'];

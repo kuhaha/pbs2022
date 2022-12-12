@@ -7,10 +7,8 @@ if (isset($_POST['act'])){
     $uname = $_POST['uname'];
     $upass = $_POST['pass1'];
     $urole = $_POST['urole'];
-    //アカウントを新規作成する場合のSQL文
     $sql ="INSERT INTO tbl_user VALUES ('{$uid}','{$uname}','{$upass}',$urole)";
     if ($act=='update'){
-      //既存のアカウントを編集する場合のSQL文
       $sql = "UPDATE tbl_user SET uname='{$uname}',upass='{$upass}',urole={$urole} WHERE uid='{$uid}'";
     }
     $rs = $conn->query($sql);

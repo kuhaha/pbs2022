@@ -9,7 +9,6 @@ if (isset($_GET['gid'])){
 	$where = "gid=".$_GET['gid'];
 }
 
-// 一覧データを検索するSQL文
 $sql = "SELECT * FROM tbl_lab NATURAL JOIN tbl_program NATURAL JOIN tbl_labgroup NATURAL JOIN tbl_group  WHERE ".$where;
 $rs = $conn->query($sql);
 if (!$rs) die('エラー: ' . $conn->error);

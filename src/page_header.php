@@ -20,7 +20,7 @@ if (isset($_SESSION['urole'])){
       'プログラム確認'  => 'pg_list',
       '資料提出'  => 'file_upload',
       );
-  }elseif($_SESSION['urole']==2) { //教員
+  }elseif($_SESSION['urole']==2 or $_SESSION['urole']==9 ) { //教員 or 管理者
     $menu = array(   
     	'進捗状況確認' => 'ad_list',
       '発表情報登録' => 'pg_edit', 
