@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2022-12-12 16:00:14
+-- 生成日時: 2022-12-13 16:57:14
 -- サーバのバージョン： 10.4.24-MariaDB
 -- PHP のバージョン: 7.4.28
 
@@ -42,10 +42,10 @@ CREATE TABLE `tbl_group` (
 --
 
 INSERT INTO `tbl_group` (`gid`, `gname`, `gyear`, `staff`, `pdate`, `room`, `detail`) VALUES
-(1, 'グループ1', 2023, NULL, '2023-01-14', '12105番教室', NULL),
-(2, 'グループ2', 2023, NULL, '2023-01-14', '12106番教室', NULL),
-(3, 'グループ3', 2023, NULL, '2023-01-14', '12107番教室', NULL),
-(4, 'グループ4', 2023, NULL, '2023-01-14', '12108番教室', NULL);
+(1, 'グループ1', 2023, 'ueda', '2023-01-14', '12105番教室', NULL),
+(2, 'グループ2', 2023, 'katou', '2023-01-14', '12106番教室', NULL),
+(3, 'グループ3', 2023, 'nagai', '2023-01-14', '12107番教室', NULL),
+(4, 'グループ4', 2023, 'ozawa', '2023-01-14', '12108番教室', NULL);
 
 -- --------------------------------------------------------
 
@@ -56,51 +56,25 @@ INSERT INTO `tbl_group` (`gid`, `gname`, `gyear`, `staff`, `pdate`, `room`, `det
 CREATE TABLE `tbl_lab` (
   `labid` int(11) NOT NULL,
   `labname` varchar(32) DEFAULT NULL,
-  `study` varchar(32) DEFAULT NULL
+  `study` varchar(32) DEFAULT NULL,
+  `gid` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `tbl_lab`
 --
 
-INSERT INTO `tbl_lab` (`labid`, `labname`, `study`) VALUES
-(1, '篠原 研究室', '情報学基礎理論'),
-(2, '上田 研究室', '情報ネットワーク、情報科学・情報システム'),
-(3, '西山 研究室', '知能情報学、 情報科学・最適化手法'),
-(4, '加藤 研究室', '土木計画学・交通工学、経営情報システム論'),
-(5, '松原 研究室', '社会システム工学・安全システム'),
-(6, '小澤 研究室', '情報ネットワーク、情報通信工学'),
-(7, '村上 研究室', 'ウェブ情報学・サービス情報学'),
-(8, '山田 研究室', '計算機システム・ネットワーク'),
-(9, '吉岡 研究室', '生命・健康・医療情報学、計算生物学'),
-(10, '永井 研究室', '知能情報学、ソフトコンピューティング');
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `tbl_labgroup`
---
-
-CREATE TABLE `tbl_labgroup` (
-  `gid` int(11) DEFAULT NULL,
-  `labid` int(11) PRIMARY KEY
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- テーブルのデータのダンプ `tbl_labgroup`
---
-
-INSERT INTO `tbl_labgroup` (`gid`, `labid`) VALUES
-(1, 4),
-(1, 3),
-(2, 8),
-(2, 9),
-(2, 2),
-(3, 6),
-(3, 1),
-(3, 5),
-(4, 7),
-(4, 10);
+INSERT INTO `tbl_lab` (`labid`, `labname`, `study`, `gid`) VALUES
+(1, '篠原 研究室', '情報学基礎理論', 3),
+(2, '上田 研究室', '情報ネットワーク、情報科学・情報システム', 2),
+(3, '西山 研究室', '知能情報学、 情報科学・最適化手法', 1),
+(4, '加藤 研究室', '土木計画学・交通工学、経営情報システム論', 1),
+(5, '松原 研究室', '社会システム工学・安全システム', 3),
+(6, '小澤 研究室', '情報ネットワーク、情報通信工学', 3),
+(7, '村上 研究室', 'ウェブ情報学・サービス情報学', 4),
+(8, '山田 研究室', '計算機システム・ネットワーク', 2),
+(9, '吉岡 研究室', '生命・健康・医療情報学、計算生物学', 4),
+(10, '永井 研究室', '知能情報学、ソフトコンピューティング', 0);
 
 -- --------------------------------------------------------
 
@@ -254,7 +228,7 @@ CREATE TABLE `tbl_progress` (
   `achievement` int(11) NOT NULL,
   `reason` text NOT NULL,
   `read_date` datetime DEFAULT current_timestamp(),
-  `advice` text
+  `advice` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -440,28 +414,6 @@ INSERT INTO `tbl_student` (`sid`, `sname`, `labid`) VALUES
 ('19RS118', '菅原 翔一', 9),
 ('19RS119', '五十嵐 悠弥', 5),
 ('19RS120', '清水 侑', 9);
-
--- --------------------------------------------------------
-
---
--- テーブルの構造 `tbl_st_semi`
---
-
-CREATE TABLE `tbl_st_semi` (
-  `sid` varchar(16) NOT NULL,
-  `st_name` text NOT NULL,
-  `note` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- テーブルのデータのダンプ `tbl_st_semi`
---
-
-INSERT INTO `tbl_st_semi` (`sid`, `st_name`, `note`) VALUES
-('19RS001', '大澤 真生', '論文着手'),
-('19RS002', '西山 快人', '今週火曜日個人面談'),
-('19RS003', '谷口 玲子', 'テーマ未定'),
-('19RS004', '鎌田 晴花', '来週のゼミ欠席');
 
 -- --------------------------------------------------------
 

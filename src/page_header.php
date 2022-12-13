@@ -24,11 +24,12 @@ if (isset($_SESSION['urole'])){
     $menu = array(   
     	'進捗状況確認' => 'ad_list2',
       '発表情報登録' => 'pg_list', 
-      'プログラム確認'  => 'pg_list',
     );
   }else if ($_SESSION['urole']==9){
-    $menu = array(   
-    	'グループ登録' => 'group_list',
+    $menu = array(
+      'グループ登録' => 'group_list',   
+    	'研究室登録' => 'lab_list',
+    	'学生登録' => 'st_list',
     );
   }
   foreach($menu as $label=>$action){

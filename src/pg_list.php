@@ -20,15 +20,17 @@
 		echo "</ul>";
 	}
 
-	$sql = "SELECT * FROM tbl_student NATURAL JOIN tbl_program NATURAL JOIN tbl_labgroup NATURAL JOIN tbl_lab WHERE gid= ".$gid;
+	$sql = "SELECT * FROM tbl_student NATURAL JOIN tbl_program NATURAL JOIN tbl_lab WHERE gid= ".$gid;
 	$sql .=" ORDER BY labid,time1";
 	$rs = $conn->query($sql);
 	if (!$rs) die('エラー: ' . $conn->error);
 	for ($gid = 1; $gid<5; $gid++){
 		echo '<button><a href="?do=pg_list&gid=' . $gid . '">グループ'.$gid.'</a></button>';
 	}
-		echo '<table border=1>';
-	echo '<tr><th>学籍番号</th><th>氏名</th><th width="400em">タイトル</th><th>研究室</th><th>開始</th><th>終了</th><th>ダウンロード</th></tr>';
+	
+	echo '<table border=1>';
+	echo '<tr><th>学籍番号</th><th>氏名</th><th width="400em">タイトル</th><th>研究室</th>';
+	echo '<th>開始</th><th>終了</th><th>ダウンロード</th><th>操作</th></tr>';
 	$row= $rs->fetch_assoc();
 	while ($row) {
 		echo '<tr>';
@@ -50,7 +52,7 @@
 		echo '</td>';
 		if ($_SESSION['urole'] > 1){
 			$e_sid = $row['sid'];
-			echo "<td><a href=\"?do=pg_edit&sid={$e_sid}\">登録</a></td>";
+			echo "<td><a href=\"?do=pg_edit&sid={$e_sid}\">編集</a></td>";
 		}
 		echo '</tr>';
 		$row= $rs->fetch_assoc();

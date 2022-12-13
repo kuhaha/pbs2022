@@ -44,9 +44,8 @@
    <input type="time" name="time2" value="<?=$time2?>">
 </td></tr>
 <tr>
-<td colspan=2><input type="submit" value=" 送　信 ">&nbsp;&nbsp;
-<button><a href="?do=pg_list">　戻る　</a></button></td>
+<td colspan=2><input type="submit" style="width:6em;" value=" 送　信 ">&nbsp;&nbsp;
+<button style="width:6em;"><a href="?do=pg_list">戻る</a></button></td>
 </tr>
-
 </table>
 </form>
