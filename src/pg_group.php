@@ -10,8 +10,7 @@ if (isset($_GET['labid'])){
 	$labid =$_GET['labid'];
 }
 $where = "labid='$labid'";
-$sql = "SELECT * FROM tbl_student NATURAL JOIN tbl_lab WHERE ".$where;
-//データベースへ問合せのSQL文($sql)を実行する・・・
+$sql = "SELECT * FROM tbl_student NATURAL JOIN tbl_lab WHERE " . $where;
 $rs = $conn->query($sql);
 if (!$rs) die('エラー: ' . $conn->error);
 $row= $rs->fetch_assoc();

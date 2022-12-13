@@ -37,7 +37,7 @@
 </td></tr>
 <tr><td>氏　　名：</td><td><?=$sname?></td></tr>
 <tr><td>発表題目：</td><td>
-  <input type="text" name="title" value="<?=$title?>" size="80">
+  <input type="text" name="title" value="<?=$title?>" size="100">
 </td></tr>
 <tr><td>発表時間：</td><td>
    <input type="time" name="time1" value="<?=$time1?>">～
