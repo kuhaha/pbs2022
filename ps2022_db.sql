@@ -83,7 +83,7 @@ INSERT INTO `tbl_lab` (`labid`, `labname`, `study`) VALUES
 
 CREATE TABLE `tbl_labgroup` (
   `gid` int(11) DEFAULT NULL,
-  `labid` int(11) DEFAULT NULL
+  `labid` int(11) PRIMARY KEY
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -254,7 +254,7 @@ CREATE TABLE `tbl_progress` (
   `achievement` int(11) NOT NULL,
   `reason` text NOT NULL,
   `read_date` datetime DEFAULT current_timestamp(),
-  `advice` text NOT NULL
+  `advice` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
