@@ -1,11 +1,9 @@
 <?php
 require_once('db_inc.php');
-// 変数の初期化。新規登録か編集かにより異なる。
 $act = 'insert';// 新規登録の場合
 $uid = $uname = ''; $urole = 1;
 if (isset($_GET['uid'])){
 	$uid = $_GET['uid'] ;
-	// 既存アカウントの情報を検索するSQL文
 	$sql = "SELECT * FROM tbl_user WHERE uid='{$uid}'";
   $rs = $conn->query($sql);
   if (!$rs) die('エラー: ' . $conn->error);
