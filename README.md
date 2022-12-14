@@ -15,6 +15,6 @@
 # 機能へアクセスするURL(hoge.phpへのアクセスを例にする)
 - ?do=hoge
 - index.php?do=hoge
-[パラメータ副場合]
+[追加のパラメータを含む場合]
 - ?do=hoge&sid=19RS004
 - index.php?do=hoge&sid=19RS004
