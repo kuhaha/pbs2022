@@ -30,6 +30,7 @@ if (isset($_SESSION['urole'])){
       'グループ登録' => 'group_list',   
     	'研究室登録' => 'lab_list',
     	'学生登録' => 'st_list',
+      'アカウント登録' => 'usr_list',
     );
   }
   foreach($menu as $label=>$action){

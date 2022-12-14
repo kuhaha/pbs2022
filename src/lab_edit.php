@@ -5,7 +5,7 @@ $labid = $gid = 0;
 if (isset($_GET['labid'])){
 	$labid = $_GET['labid'];
 }
-if (isset($_GET['labid'])){
+if (isset($_GET['gid'])){
 	$gid = $_GET['gid'];
 }
 
@@ -31,18 +31,24 @@ if ($row){
 	$study = $row['study'];
 	$e_gid = $row['gid'];
 }
-echo '<table >';
-echo '<tr><th>研究室名</th>';
-echo '<td><input type="text" name="labname" size="80" value="' . $labname . '"></td></tr>';
-echo '<tr><th>専門分野</th>';
-echo '<td><input type="text" name="study" size="100" value="' . $study . '"></td></tr>';
-echo '<tr><th>所属グループ</th>';
-echo '<td>';
+?>
+<form action="?do=usr_save" method="post">
+<input type="hidden" name="act" value="<?=$act?>">
+<table >
+<tr><th>研究室名：</th>
+<td><input type="text" name="labname" size="100" value="<?=$labname?>"></td></tr>
+<tr><th>専門分野：</th>
+<td><input type="text" name="study" size="100" value="<?=$study?>"></td></tr>
+<tr><th>所属グループ：</th>
+<td>
+<?php	
 foreach ($groups as $gid => $gname) {
 	$checked = ($gid == $e_gid) ? 'checked' : '';
 	echo '<input type="radio" name="gid" value="' . $gid . '" ' . $checked . '>' . $gname;
 }
-echo '</td></tr>';
-echo '</table>';
-
 ?>
+</td></tr>
+</table>
+<input type="submit" value="登録" style="width:6em;">
+<input type="reset" value="取消" style="width:6em;">
+</form>

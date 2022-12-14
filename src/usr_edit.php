@@ -1,3 +1,4 @@
+<h2>アカウント登録・編集</h2>
 <?php
 require_once('db_inc.php');
 $act = 'insert';// 新規登録の場合
@@ -15,11 +16,10 @@ if (isset($_GET['uid'])){
 	}
 }
 ?>
-<h2>アカウント登録・編集</h2>
 <form action="?do=usr_save" method="post">
 <input type="hidden" name="act" value="<?php echo $act; ?>">
 <table>
-<tr><td>ユーザID：</td><td><input type="hidden" name="act" value="<?php echo $act; ?>">
+<tr><td>ユーザID：</td><td>
 <?php
 if ($act=='insert'){
   echo '<input type="text" name="uid">';
@@ -30,13 +30,13 @@ if ($act=='insert'){
 ?>
 </td></tr>
 <tr><td>氏　名：</td><td>
-  <input type="text" name="uname"  value="<?php echo $uname;?>">
+  <input type="text" name="uname" size="50em" value="<?php echo $uname;?>">
 </td></tr>
 <tr><td>パスワード</td><td>
-  <input type="password" name="pass1">
+  <input type="password" name="pass1" size="50em">
 </td></tr>
 <tr><td>（再入力）</td><td>
-  <input type="password" name="pass2">
+  <input type="password" name="pass2" size="50em">
 </td></tr>
 <tr><td>ユーザ種別</td><td>
 <?php
